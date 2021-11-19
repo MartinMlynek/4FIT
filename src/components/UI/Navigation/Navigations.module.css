@@ -1,0 +1,46 @@
+.navMenu {
+  list-style-type: none;
+  margin: 0;
+  height: 100%;
+  position: relative;
+  padding: 10px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 54px;
+  font-weight: normal;
+  color: white;
+  margin: 0;
+}
+
+.first {
+  height: 12%;
+  margin: 20px 0;
+}
+.underline {
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+
+.right {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
+}
+
+.focus {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 20px;
+  border-radius: 30px;
+  background-color: #84c25a;
+  cursor: grab;
+}
+
+.focus:hover,
+.focus:active {
+  background: #84c25a;
+}

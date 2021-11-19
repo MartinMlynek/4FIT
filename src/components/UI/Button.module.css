@@ -1,0 +1,23 @@
+.button {
+  font-weight: 700;
+  font-size: 32px;
+  border: 1px solid #659645;
+  border-radius: 15px;
+  background: #659645;
+  color: white;
+  padding: 15px 0;
+  padding-left: 15px;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+}
+
+.button:hover,
+.button:active {
+  background: #84c25a;
+  border-color: #84c25a;
+}
+
+.button:focus {
+  outline: none;
+}

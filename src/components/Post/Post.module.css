@@ -1,0 +1,82 @@
+.post {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  width: 150px;
+  margin-right: 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content {
+  margin-top: 0;
+}
+
+.date {
+  padding-top: 3px;
+  margin-right: 10px;
+}
+
+.button {
+  background-color: #aeaeae;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  padding: 7px;
+}
+
+.container {
+  display: flex;
+  height: 150px;
+}
+
+.line {
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.dateReplyBox {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 5px;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.formRow {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttonComment {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 15px;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex-grow: 1;
+  font-size: bold;
+}
+.icons svg {
+  margin-right: 10px;
+  font-weight: bold;
+}
+.icons svg:last-child {
+  margin-right: 0px;
+}

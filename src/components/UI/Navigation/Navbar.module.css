@@ -1,0 +1,21 @@
+.sideNav,
+.navMenu {
+  height: 100%;
+}
+
+.sideNav {
+  width: 15%;
+  background: hsl(0, 0%, 20%);
+  position: fixed;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+.secondBar {
+  left: 15%;
+  width: 12%;
+  background: #585858;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}

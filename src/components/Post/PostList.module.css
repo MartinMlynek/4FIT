@@ -1,0 +1,42 @@
+.posts {
+  max-width: 60rem;
+  width: 90%;
+  margin: 2rem auto;
+  animation: meals-appear 1s ease-out forwards;
+  display: flex;
+  flex-direction: column;
+}
+
+.post {
+  margin-top: 2rem;
+}
+.MealsLoading {
+  text-align: center;
+  color: white;
+}
+
+.MealsError {
+  text-align: center;
+  color: red;
+}
+
+.posts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.show-comments {
+  width: 190px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  padding: 6px;
+  background-color: #ececec;
+}
+
+.container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
