@@ -4,7 +4,7 @@ import { useReducer } from "react";
 import UserContext from "./UserContext";
 import { useNavigate } from "react-router-dom";
 
-const url = "http://127.0.0.1:5000";
+const url = "http://localhost:5000";
 
 const client = axios.create({
   baseURL: url,
@@ -18,6 +18,7 @@ const defaultUserState = {
   category: "2",
   user: null,
   token: "",
+  search: "",
 };
 
 function userReducer(state, action) {
@@ -37,10 +38,19 @@ function userReducer(state, action) {
       user: action.user.user,
       token: action.user.token,
     };
-  } else if (action.type == "UPDATE_CATEGORY") {
+  } else if (action.type === "UPDATE_CATEGORY") {
     return {
       ...state,
       category: action.category,
+    };
+  } else if (action.type === "UPDATE_FAVOURITES") {
+    const user = state.user;
+    user.favourites = action.favourites;
+    return { ...state, user: user };
+  } else if (action.type === "SEARCH") {
+    return {
+      ...state,
+      search: action.search,
     };
   }
   return defaultUserState;
@@ -77,6 +87,14 @@ const UserProvider = (props) => {
     dispatchUserAction({ type: "LOGIN", user: user });
   };
 
+  const favouriteHandler = (favourites) => {
+    dispatchUserAction({ type: "UPDATE_FAVOURITES", favourites: favourites });
+  };
+
+  const searchHandler = (search) => {
+    dispatchUserAction({ type: "SEARCH", search: search });
+  };
+
   console.log("SDasda");
   console.log(userState);
   const postContext = {
@@ -86,10 +104,13 @@ const UserProvider = (props) => {
     token: userState.token,
     client: userState.client,
     user: userState.user,
+    search: userState.search,
     getPosts: getPostsHandler,
     setSubCategory: subCategoryHandler,
     login: loginHandler,
     setCategory: categoryHandler,
+    setFavourite: favouriteHandler,
+    setSearch: searchHandler,
   };
 
   return (

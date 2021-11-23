@@ -33,6 +33,7 @@
   border: none;
   padding: 6px;
   background-color: #ececec;
+  cursor: pointer;
 }
 
 .container {

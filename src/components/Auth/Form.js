@@ -7,11 +7,9 @@ import classes from "./Form.module.css";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const Form = (props) => {
-  const navigate = useNavigate();
   const passRef = useRef("");
   const userRef = useRef("");
-  const userCtx = useContext(UserContext);
-  const loginHandler = (event) => {
+  const formHandler = (event) => {
     event.preventDefault();
     const username = userRef.current.value;
     const password = passRef.current.value;
@@ -21,67 +19,14 @@ const Form = (props) => {
       username.length !== 0 &&
       password.length !== 0
     ) {
-      setMessage("");
-      if (props.isLogin) {
-        sendAuth(username, password);
-      } else {
-        register(username, password);
-      }
+      props.setMessage("");
+      props.onClick(username, password);
+
       passRef.current.value = "";
     } else {
-      setMessage(
-        props.isLogin
-          ? "Nepodařilo se přihlásit"
-          : "Nepodařilo se zaregistrovat"
-      );
+      props.setMessage(`Unavalbile to ${props.tile.lower()}`);
     }
   };
-
-  async function register(username, password) {
-    try {
-      const response = await userCtx.client.post(
-        "/register/",
-        {
-          username: username,
-          password: password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      navigate("/login", { replace: true });
-    } catch (err) {
-      setMessage("Nepodařilo se zaregistrovat");
-    }
-  }
-
-  async function sendAuth(username, password) {
-    try {
-      const response = await userCtx.client.post(
-        "/login/",
-        {},
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          auth: {
-            username: username,
-            password: password,
-          },
-        }
-      );
-      const user = await response.data;
-      userCtx.login(user);
-      console.log("USER:");
-      console.log(user);
-      navigate("/", { replace: true });
-    } catch (error) {
-      setMessage("Nepodařilo se přihlásit");
-    }
-  }
 
   const usernameValidHandler = () => {
     const username = userRef.current.value;
@@ -103,27 +48,27 @@ const Form = (props) => {
 
   const [usernameHasError, setUsernameHasError] = useState(false);
   const [passwordHasError, setPasswordHasError] = useState(false);
-  const [message, setMessage] = useState("");
   const usernameClasses = usernameHasError
     ? "form-control invalid"
     : "form-control";
   const passwordClasses = passwordHasError
     ? "form-control invalid"
     : "form-control";
-  const text = props.isLogin ? "Login" : "Register";
+  const text = props.title;
   return (
     <section className={classes.box}>
       <Card className={classes.card}>
         <h1 className={classes.title} textAlign="center ">
           {text}
         </h1>
-        <form onSubmit={loginHandler}>
+        <form onSubmit={formHandler}>
           <div className="control-group">
-            <p>{message}</p>
+            <p>{props.message}</p>
             <div className={usernameClasses}>
               <label htmlFor="username">Username:</label>
               <input
                 ref={userRef}
+                defaultValue={props.userValue}
                 type="text"
                 id="username"
                 onBlur={usernameValidHandler}

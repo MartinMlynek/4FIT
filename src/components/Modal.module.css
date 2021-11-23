@@ -44,18 +44,26 @@
 }
 
 .button {
-  text-align: center;
-  border-radius: 5px;
+  text-align: center !important;
+  border-radius: 5px !important;
 }
 
 .settings-button {
-  width: 40%;
-  margin-bottom: 10px;
-  padding-left: 0px;
-  text-align: center;
-  align-self: center;
+  width: 40% !important;
+  margin-bottom: 10px !important;
+  padding-left: 0px !important;
+  text-align: center !important;
+  align-self: center !important;
 }
 
 .settings-button-admin {
   background-color: orangered;
+}
+
+.imageCross {
+  position: fixed;
+  top: 0;
+  right: 0;
+  color: white;
+  z-index: 100;
 }

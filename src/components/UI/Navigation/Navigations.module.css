@@ -15,6 +15,12 @@
   margin: 0;
 }
 
+.logo {
+  max-width: 100px;
+  height: auto;
+  display: block;
+}
+
 .first {
   height: 12%;
   margin: 20px 0;
@@ -43,4 +49,28 @@
 .focus:hover,
 .focus:active {
   background: #84c25a;
+}
+
+.search {
+  margin-bottom: 5px;
+  font: inherit;
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 100%;
+}
+
+.webTitle {
+  display: flex;
+  align-items: center;
+  margin: 15px;
+}
+
+.webTitle span {
+  margin-left: 5px;
+  -webkit-text-stroke: 4px black;
+  color: #659645;
+  font-weight: 700;
+  font-size: 72px;
 }

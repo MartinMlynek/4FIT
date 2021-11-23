@@ -1,4 +1,5 @@
 import React from "react";
+import Favourite from "../components/Favourite";
 
 const UserContext = React.createContext({
   posts: [],
@@ -6,10 +7,14 @@ const UserContext = React.createContext({
   category: "1",
   token: null,
   user: null,
+  search: "",
   getPosts: () => {},
   setSubCategory: (subCategory) => {},
   setCategory: (category) => {},
+  setFavourite: (Favourites) => {},
+  setSearch: (search) => {},
   login: (user) => {},
+  client: null,
 });
 
 export default UserContext;

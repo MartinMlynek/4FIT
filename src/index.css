@@ -41,12 +41,19 @@ code {
   display: block;
 }
 
-.form-control label {
+.form-control-row input,
+.form-control-row label {
+  display: inline-block;
+}
+
+.form-control label,
+.form-control-row label {
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
 .form-control input,
+.form-control-row input,
 .form-control select {
   font: inherit;
   padding: 0.5rem;
@@ -56,7 +63,8 @@ code {
   max-width: 100%;
 }
 
-.form-control input:focus {
+.form-control input:focus,
+.form-control-row input:focus {
   outline: none;
   border-color: #659645;
   background-color: #a7d787;
@@ -119,6 +127,7 @@ th {
   background-color: #659645;
   color: #fff;
   width: 25%;
+  max-width: 30%;
 }
 
 tr th:last-child {
@@ -130,6 +139,7 @@ tr th:first-child {
 
 tbody tr:nth-child(odd) {
   background-color: #ffffff;
+  border-bottom: black solid 1px;
 }
 
 tbody tr:nth-child(even) {

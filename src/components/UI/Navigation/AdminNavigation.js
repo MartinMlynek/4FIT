@@ -12,11 +12,14 @@ const AdminNavigation = () => {
           </div>
         </div>
         <NavItem text={"Main page"} link={"/"} />
-        <NavItem color={"lightGreen"} text={"Users"} link={"/users"} />
-        <NavItem color={"green"} text={"Posts"} link={"/posts"} />
-        <NavItem color={"green"} text={"Comments"} link={"/comments"} />
+        <NavItem color={"lightGreen"} text={"Users"} link={"/admin"} />
+        <NavItem color={"green"} text={"Posts"} link={"/admin/posts"} />
 
-        <NavItem color={"green"} text={"Categories"} link={"/categories"} />
+        <NavItem
+          color={"green"}
+          text={"Categories"}
+          link={"/admin/categories"}
+        />
       </ul>
     </NavBar>
   );

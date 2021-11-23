@@ -6,6 +6,7 @@ import Backdrop from "./Backdrop";
 import ReactDOM from "react-dom";
 import UserContext from "../store/UserContext";
 import { Navigate, useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 const ModalOverlay = (props) => {
   const navigation = useNavigate();
 
@@ -13,6 +14,12 @@ const ModalOverlay = (props) => {
     navigation("/admin", { replace: false });
     props.onConfirm();
   };
+
+  const profileHandler = () => {
+    navigation("/profile", { replace: false });
+    props.onConfirm();
+  };
+
   return (
     <Card className={classes.modal}>
       <header className={classes.header}>
@@ -22,7 +29,9 @@ const ModalOverlay = (props) => {
         </span>
       </header>
       <div className={classes.content}>
-        <Button className={classes["settings-button"]}>Profile</Button>
+        <Button className={classes["settings-button"]} onClick={profileHandler}>
+          Profile
+        </Button>
         {props.isAdmin && (
           <Button className={classes["settings-button"]} onClick={adminHandler}>
             Admin page

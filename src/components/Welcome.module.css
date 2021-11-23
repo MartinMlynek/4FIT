@@ -1,0 +1,62 @@
+.logoBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5vh 0;
+}
+
+.logo {
+  width: 20%;
+  height: auto;
+}
+
+.logoBox span {
+  margin-left: 5px;
+  -webkit-text-stroke: 4px black;
+  color: #659645;
+  font-weight: 700;
+  font-size: 72px;
+}
+
+.welcomeBox {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cardBorder {
+  border: #659645 3px solid;
+  background-color: #d6edc8;
+}
+
+.popular {
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 50px;
+  background-color: #d6edc8;
+  border: #659645 3px solid;
+}
+
+.subCategory {
+  color: #659645;
+}
+
+.popularThread {
+  margin-bottom: 2rem;
+  box-shadow: 5px 5px 20px 5px rgba(88, 88, 88, 0.15);
+}
+.popularThread:hover {
+  box-shadow: 5px 5px 20px 5px rgba(88, 88, 88, 0.3);
+}
+
+.popularThread:last-child {
+  margin-bottom: 0;
+}
+
+.subtitle {
+  font-style: oblique;
+  color: #659645;
+  -webkit-text-stroke: 0.5px black;
+}

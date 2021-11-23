@@ -7,19 +7,14 @@ import axios from "axios";
 import { file } from "@babel/types";
 import UserContext from "../store/UserContext";
 import Backdrop from "./Backdrop";
-const url = "http://127.0.0.1:5000";
-
-const client = axios.create({
-  baseURL: url,
-  headers: { "Content-Type": "multipart/form-data" },
-});
+const url = "http://localhost:5000";
 
 const ModalOverlay = (props) => {
   const textInput = React.useRef("");
   const fileInput = React.useRef(null);
   const userCtx = useContext(UserContext);
   async function addPost(data) {
-    const response = await client.post("/", data);
+    const response = await userCtx.client.post("/", data);
     userCtx.getPosts();
   }
   const submitHandler = (event) => {

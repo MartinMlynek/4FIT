@@ -2,23 +2,52 @@ import classes from "./Navigations.module.css";
 import MainMenu from "./MainMenu";
 import Bottom from "./Bottom";
 import NavBar from "./Navbar";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Button from "../Button";
 import AddModal from "../../AddModal";
 import UserContext from "../../../store/UserContext";
-
+import { useRef } from "react/cjs/react.development";
+import logo from "../../../svg/icon.png";
 const Navigations = (props) => {
   const userCtx = useContext(UserContext);
   const [showAddModal, setshowAddModal] = useState(false);
   const [focus, setFocus] = useState(false);
   const showModal = () => setshowAddModal(true);
   const hideModal = () => setshowAddModal(false);
+  const [categories, setCategories] = useState([]);
+  const searchRef = useRef("");
+  async function getCategories() {
+    const response = await userCtx.client.get("/categories/");
+    console.log("TADYJE");
+    console.log(response.data);
+    setCategories(response.data);
+  }
 
+  const searchHandler = () => {
+    console.log("PRO");
+    console.log(searchRef.current.value);
+    userCtx.setSearch(searchRef.current.value);
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const specificCategory = categories.find((cat) => {
+    console.log(userCtx.category);
+    return cat.id === userCtx.category;
+  });
+  console.log("HOOD");
+  console.log(specificCategory);
+  const subCategories =
+    specificCategory !== undefined ? specificCategory.subCategories : [];
   const updateCategory = (category) => {
     userCtx.setCategory(category);
   };
 
   const updateContentHandler = (subCategory) => {
+    console.log("SUBCATEGORY");
+    console.log(subCategory);
     userCtx.setSubCategory(subCategory);
   };
 
@@ -65,12 +94,16 @@ const Navigations = (props) => {
           title="New post"
           message="Message"
           onConfirm={hideModal}
-          subCategory={userCtx.category}
+          subCategory={userCtx.subCategory}
         />
       )}
       {!focus && (
         <NavBar>
           <ul className={classes.navMenu}>
+            <div class={classes.webTitle}>
+              <img src={logo} className={classes.logo} />
+              <span>4FIT</span>
+            </div>
             <div className={classes.first}>
               <Button onClick={showModal}>
                 <div className={classes.right}>
@@ -85,8 +118,10 @@ const Navigations = (props) => {
             <MainMenu
               isSecond={false}
               subUrl={"/categories/"}
+              categories={categories}
               updateCategoryFunc={updateCategory}
             />
+
             <Bottom />
           </ul>
         </NavBar>
@@ -98,14 +133,17 @@ const Navigations = (props) => {
             <div className={classes.first}>
               <div className={classes.underline}>
                 <h1 className={classes.title}>General</h1>
+                <input
+                  ref={searchRef}
+                  onChange={searchHandler}
+                  type="text"
+                  className={classes.search}
+                  placeholder="search..."
+                />
               </div>
             </div>
 
-            <MainMenu
-              isSecond={true}
-              updateCategoryFunc={updateContentHandler}
-              subUrl={"/subcategories/" + userCtx.category}
-            />
+            <MainMenu isSecond={true} categories={subCategories} />
           </ul>
         </NavBar>
       )}

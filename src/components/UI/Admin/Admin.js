@@ -23,10 +23,10 @@ const Admin = () => {
 
     getUsers();
   }
-  useEffect(() => {
-    getUsers();
-  }, []);
 
+  if (userCtx.user !== null) {
+    getUsers();
+  }
   const userList = users.map((user) => {
     const edit = (
       <svg
@@ -68,12 +68,6 @@ const Admin = () => {
         <td>{user.username}</td>
         <td>{user.role.name}</td>
         <td>
-          <Link to={"/aposts/" + user.id}>posts</Link>
-        </td>
-        <td>
-          <Link to={"/acomments/" + user.id}>comments</Link>
-        </td>
-        <td>
           <Link to={"/afavposts/" + user.id}>fav posts</Link>
         </td>
         <td>
@@ -90,8 +84,6 @@ const Admin = () => {
         <tr>
           <th>username</th>
           <th>role</th>
-          <th>posts</th>
-          <th>comments</th>
           <th>fav posts</th>
           <th>edit</th>
           <th>remove </th>
